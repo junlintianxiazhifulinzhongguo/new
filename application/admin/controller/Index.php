@@ -13,6 +13,7 @@ class Index extends Controller
 {
     public function index()
     {
+        $this->view->engine->layout(true);
         return view();
     }
     public function test()
