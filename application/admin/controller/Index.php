@@ -25,4 +25,83 @@ class Index extends Controller
         $this->view->engine->layout(true);
         return view();
     }
+
+    public function te()
+    {
+        $data='{
+    "code": "0",
+    "data": [
+        {
+            "StaffName": "kagula",
+            "deviceIndex": "0",
+            "eventTime": "2017-01-21 07:01:37",
+            "idWarningInfo": "1",
+            "portIndex": "0",
+            "warningType": "0"
+        },
+        {
+            "StaffName": "kagula",
+            "deviceIndex": "0",
+            "eventTime": "2017-01-21 07:01:48",
+            "idWarningInfo": "2",
+            "portIndex": "1",
+            "warningType": "0"
+        },
+        {
+            "StaffName": "kagula",
+            "deviceIndex": "1",
+            "eventTime": "2017-01-21 07:02:16",
+            "idWarningInfo": "3",
+            "portIndex": "0",
+            "warningType": "0"
+        },
+        {
+            "StaffName": "kagula",
+            "deviceIndex": "1",
+            "eventTime": "2017-01-21 07:02:16",
+            "idWarningInfo": "4",
+            "portIndex": "1",
+            "warningType": "0"
+        },
+        {
+            "StaffName": "",
+            "deviceIndex": "1",
+            "eventTime": "2017-02-04 01:03:33",
+            "idWarningInfo": "5",
+            "portIndex": "1",
+            "warningType": "0"
+        },
+        {
+            "StaffName": "",
+            "deviceIndex": "1",
+            "eventTime": "2017-02-04 05:46:49",
+            "idWarningInfo": "6",
+            "portIndex": "1",
+            "warningType": "1"
+        },
+        {
+            "StaffName": "",
+            "deviceIndex": "1",
+            "eventTime": "2017-02-04 05:46:59",
+            "idWarningInfo": "7",
+            "portIndex": "1",
+            "warningType": "2"
+        }
+    ],
+    "iTotalDisplayRecords": "100",
+    "iTotalRecords": "100",
+    "message": "success"
+}';
+
+      return  $data;
+    }
+
+
+
+
+
+
 }
+
+
+
