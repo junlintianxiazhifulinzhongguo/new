@@ -6,7 +6,6 @@
  * Time: 下午 1:56
  */
 
-
 namespace app\admin\controller;
 use think\Controller;
 class Index extends Controller
@@ -20,13 +19,24 @@ class Index extends Controller
     {
         return view();
     }
+    public function j()
+    {
+        return view();
+    }
     public function tt()
     {
         $this->view->engine->layout(true);
         return view();
     }
-
+    public function ttt()
+    {
+        return view();
+    }
     public function te()
+    {
+        return view();
+    }
+    public function t()
     {
         $data='{
     "code": "0",
@@ -86,6 +96,14 @@ class Index extends Controller
             "idWarningInfo": "7",
             "portIndex": "1",
             "warningType": "2"
+        },
+        {
+            "StaffName": "",
+            "deviceIndex": "1",
+            "eventTime": "2017-02-04 05:46:59",
+            "idWarningInfo": "8",
+            "portIndex": "1",
+            "warningType": "2"
         }
     ],
     "iTotalDisplayRecords": "100",
@@ -97,7 +115,22 @@ class Index extends Controller
     }
 
 
-
+public function getData()
+{
+    $dataTables=request()->post();
+    //print_r($dataTables);
+    $surname=model('Surname');
+    $result=$surname->getSurname($dataTables['start'],$dataTables['length']);
+    $data=[
+        "code"=> 0,
+        "draw" => intval($dataTables['draw']),
+        "recordsFiltered"=>120,
+        "recordsTotal"=> 130,
+        "message"=> "success",
+        "data" => $result
+    ];
+    return json($data);
+}
 
 
 
