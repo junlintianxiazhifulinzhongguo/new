@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
+    <link href=" https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,6 +20,7 @@
         <th>拼音</th>
         <th>封面</th>
         <th>头像</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tfoot>
@@ -40,6 +41,8 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 <script>
 
     var lang = {
@@ -73,8 +76,13 @@
         //"lengthChange": false,//不让用户选择每页item数量
         "aLengthMenu": [5, 25, 50, "全部"],//让用户选择页面记录数量
         "iDisplayLength": 5, //默认页面中的记录数量。
-        "bFilter": true, //过滤功能
         //"bSort": false, //禁用排序
+        "bPaginate": true, //翻页功能
+        "bFilter": true, //列筛序功能
+        "searching": true,//本地搜索
+        "ordering": true, //排序功能
+        "Info": true,//页脚信息
+        "autoWidth": true,//自动宽度
         "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ] }],//设置第一列不可排序
         //"aaSorting": [[ 0, "desc" ]], //设置第一列默认降序
         "serverSide" : true,//服务端进行分页处理
@@ -93,8 +101,14 @@
             { "data": "name"},
             { "data": "pinyin" },
             { "data": "surname_cover"},
-            { "data": "surname_head" }
+            { "data": "surname_head" },
+            { "data": "" ,render: function (data, type, row) {
+                var html = "<a href='javascript:void(0);' class='btn btn-default btn-xs'><i class='fa fa-arrow-up'></i>编辑</a>";
+                html += "<a href='javascript:void(0);'  class='btn btn-default btn-xs'><i class='fa fa-arrow-down'></i>删除</a>";
+                return html;
+            }}
         ]
+
     } );
 
 //    table= $('#example').DataTable(
