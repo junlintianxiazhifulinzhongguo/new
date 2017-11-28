@@ -48,74 +48,15 @@ class Index extends Controller
             "idWarningInfo": "1",
             "portIndex": "0",
             "warningType": "0"
-        },
-        {
-            "StaffName": "kagula",
-            "deviceIndex": "0",
-            "eventTime": "2017-01-21 07:01:48",
-            "idWarningInfo": "2",
-            "portIndex": "1",
-            "warningType": "0"
-        },
-        {
-            "StaffName": "kagula",
-            "deviceIndex": "1",
-            "eventTime": "2017-01-21 07:02:16",
-            "idWarningInfo": "3",
-            "portIndex": "0",
-            "warningType": "0"
-        },
-        {
-            "StaffName": "kagula",
-            "deviceIndex": "1",
-            "eventTime": "2017-01-21 07:02:16",
-            "idWarningInfo": "4",
-            "portIndex": "1",
-            "warningType": "0"
-        },
-        {
-            "StaffName": "",
-            "deviceIndex": "1",
-            "eventTime": "2017-02-04 01:03:33",
-            "idWarningInfo": "5",
-            "portIndex": "1",
-            "warningType": "0"
-        },
-        {
-            "StaffName": "",
-            "deviceIndex": "1",
-            "eventTime": "2017-02-04 05:46:49",
-            "idWarningInfo": "6",
-            "portIndex": "1",
-            "warningType": "1"
-        },
-        {
-            "StaffName": "",
-            "deviceIndex": "1",
-            "eventTime": "2017-02-04 05:46:59",
-            "idWarningInfo": "7",
-            "portIndex": "1",
-            "warningType": "2"
-        },
-        {
-            "StaffName": "",
-            "deviceIndex": "1",
-            "eventTime": "2017-02-04 05:46:59",
-            "idWarningInfo": "8",
-            "portIndex": "1",
-            "warningType": "2"
         }
     ],
     "iTotalDisplayRecords": "100",
     "iTotalRecords": "100",
     "message": "success"
 }';
-
       return  $data;
     }
-
-
-public function getData()
+    public function getData()
 {
     $dataTables=request()->post();
     //print_r($dataTables);
@@ -131,8 +72,63 @@ public function getData()
     ];
     return json($data);
 }
+    public function ss()
+    {
+        return view();
+    }
+    public function sste()
+    {
 
 
+
+
+        $a='{
+        "code": "0",
+  "data": [
+    {
+      "DT_RowId": "row_1",
+      "first_name": "Tiger",
+      "last_name": "Nixon",
+      "position": "System Architect",
+      "email": "t.nixon@datatables.net",
+      "office": "Edinburgh",
+      "extn": "5421",
+      "age": "61",
+      "salary": "320800",
+      "start_date": "2011-04-25"
+    }
+  ],
+  "options": [],
+  "files": [],
+  "iTotalDisplayRecords": "100",
+  "iTotalRecords": "100",
+  "message": "success"
+}';
+        return  $a;
+    }
+
+public function sse()
+{
+    $dataTables=request()->post();
+   // return $dataTables;
+    print_r($dataTables);
+}
+
+    public function se()
+    {
+        return view();
+    }
+    public function ff()
+    {
+        return view();
+    }
+
+    public function pt()
+    {
+        $dataTables=request()->post();
+        // return $dataTables;
+        print_r($dataTables);
+    }
 
 }
 

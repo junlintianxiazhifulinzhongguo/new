@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/datatables/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css" rel="stylesheet">
+    <link href=" https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="/new/public/static/admin/css/editor.dataTables.min.css" rel="stylesheet">
+</head>
+<body>
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th></th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th width="18%">Start date</th>
+        <th>Salary</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script src="/new/public/static/admin/js/dataTables.editor.min.js"></script>
+<script>
+    var editor; // use a global for the submit and return data rendering in the examples
+        editor = new $.fn.dataTable.Editor( {
+            ajax: {
+                url : "{:url('index/sse')}",
+                dataType : "POST",
+                data:{id:'122'},
+                success:function ()
+                {
+                    console.log(111111111);
+                }
+            },
+            table: "#example",
+            fields: [ {
+                label: "First name:",
+                name: "first_name"
+            }, {
+                label: "Last name:",
+                name: "last_name"
+            }, {
+                label: "Position:",
+                name: "position"
+            }, {
+                label: "Office:",
+                name: "office"
+            }, {
+                label: "Extension:",
+                name: "extn"
+            }, {
+                label: "Start date:",
+                name: "start_date",
+                type: "datetime"
+            }, {
+                label: "Salary:",
+                name: "salary"
+            }
+            ]
+        } );
+
+        // Activate an inline edit on click of a table cell
+        $('#example').on( 'click', 'tbody td:not(:first-child)', function (e) {
+            editor.inline( this, {
+                onBlur: 'submit'
+            } );
+        } );
+
+        $('#example').DataTable( {
+            aLengthMenu: [5, 25, 50, "全部"],//让用户选择页面记录数量
+            iDisplayLength: 5, //默认页面中的记录数量。
+            dom: "Bfrtip",
+            ajax : {
+                dataSrc: function (json) {
+                    console.log('process response data from server side before display.');
+                    return json.data;
+                },
+                url : "{:url('index/sste')}",
+                type : "POST",
+                crossDomain: true
+            },
+            order: [[ 1, 'asc' ]],
+            columns: [
+                {
+                    data: null,
+                    defaultContent: '',
+                    className: 'select-checkbox',
+                    orderable: false
+                },
+                { data: "first_name" },
+                { data: "last_name" },
+                { data: "position" },
+                { data: "office" },
+                { data: "start_date" },
+                { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+            ],
+            select: {
+                style:    'os',
+                selector: 'td:first-child'
+            },
+            buttons: [
+                { extend: "create", editor: editor },
+                { extend: "edit",   editor: editor },
+                { extend: "remove", editor: editor }
+            ],
+            serverSide : true//服务端进行分页处理
+        } );
+
+</script>
