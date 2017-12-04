@@ -9,11 +9,9 @@ class Surname extends Model
      * @param int $length
      * @return bool
      */
-    public function getSurname($location=0,$length=5)
+    public function getSurname($order,$location=0,$length=5)
     {
-        $order = [
-            'id' => 'asc',
-        ];
+
         return $this->order($order)->limit($location,$length)->select();
     }
 

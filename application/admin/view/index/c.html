@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/autofill/2.2.2/css/autoFill.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/colreorder/1.4.1/css/colReorder.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedheader/3.1.3/css/fixedHeader.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/keytable/2.3.2/css/keyTable.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/scroller/1.4.3/css/scroller.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.2.3/css/select.bootstrap4.min.css" rel="stylesheet">
+    <link href="/new/public/static/admin/css/editor.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<style>
+    .btn-group {
+       display: inline;
+    }
+</style>
+<body>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped" id="example" cellspacing="0" width="100%">
+        <thead class="thead-inverse">
+        <tr>
+            <th></th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th width="18%">Start date</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/autofill/2.2.2/js/dataTables.autoFill.min.js"></script>
+<script src="https://cdn.datatables.net/autofill/2.2.2/js/autoFill.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/colreorder/1.4.1/js/dataTables.colReorder.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdn.datatables.net/keytable/2.3.2/js/dataTables.keyTable.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/scroller/1.4.3/js/dataTables.scroller.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+<script src="/new/public/static/admin/js/dataTables.editor.min.js"></script>
+<script>
+    var lang = {
+        "sProcessing": "处理中...",
+        "sLengthMenu": "每页 _MENU_ 条记录",
+        "sZeroRecords": "没有匹配结果",
+        "sInfo": "当前显示第 _START_ 至第 _END_ 条记录，共 _TOTAL_ 条记录。",
+        "sInfoEmpty": "当前显示第 0 至 0 条记录，共 0 条记录",
+        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+        "sInfoPostFix": "",
+        "sSearch": "搜索:",
+        "sUrl": "",
+        "sEmptyTable": "表中数据为空",
+        "sLoadingRecords": "载入中...",
+        "sInfoThousands": ",",
+        "oPaginate": {
+            "sFirst": "首页",
+            "sPrevious": "上页",
+            "sNext": "下页",
+            "sLast": "末页",
+            "sJump": "跳转"
+        },
+        "oAria": {
+            "sSortAscending": ": 以升序排列此列",
+            "sSortDescending": ": 以降序排列此列"
+        },
+        'buttons':{
+            'selected':'选中',
+            'selectedSingle':'单选',
+            'selectAll':'全选',
+            'selectNone':'不选',
+            'selectRows':'单行',
+            'selectColumns':'单列',
+            'selectCells':'单格',
+            'create':'<i class="fa fa-plus fa-fw" aria-hidden="true"></i> ',
+            'edit':'<i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>',
+            'remove':'<i class="fa fa-trash fa-fw" aria-hidden="true"></i>',
+            'update':'更新',
+            'save':'保存',
+            'copy':'<i class="fa fa-clone fa-fw" aria-hidden="true"></i>',
+            'print':'<i class="fa fa-print fa-fw" aria-hidden="true"></i>'
+        }
+    };
+
+    var editor; // use a global for the submit and return data rendering in the examples
+    editor = new $.fn.dataTable.Editor( {
+        ajax:{
+            url : "{:url('index/pt')}",
+            type : "POST",
+            success: function (data)
+            {
+                if(parseInt(data.code)===1)
+                {
+                    var html='<tr class="edit_success" style="background-color:rgba(0,205,0,0.8);"><td colspan="20">'+data.message+'</td></tr>';
+                    $("#"+data.id).before(html);
+                }
+                else
+                {
+                    html='<tr class="edit_fail" style="background-color:rgba(255,0,0,0.8);"><td colspan="20">'+data.message+'</td></tr>';
+                    $("#"+data.id).before(html);
+                }
+            }
+        },
+        table: "#example",
+        idSrc:  "id",
+        fields: [ {
+            label: "Id:",
+            name: "id"
+        }, {
+            label: "Name:",
+            name: "name"
+        }, {
+            label: "Pinyin:",
+            name: "pinyin"
+        }, {
+            label: "Surname cover:",
+            name: "surname_cover"
+        }, {
+            label: "Surname head:",
+            name: "surname_head"
+        }
+        ]
+    } );
+
+    // Activate an inline edit on click of a table cell
+    $('#example').on( 'click', 'tbody td:not(:first-child,:last-child)', function (e) {
+        editor.inline( this , {
+            onBlur: 'submit'
+        } );
+    } );
+
+    var table=$('#example').DataTable( {
+        language:lang,  //中文提示
+        aLengthMenu: [5, 25, 50, "全部"],//让用户选择页面记录数量
+        iDisplayLength: 5, //默认页面中的记录数量。
+
+        ajax : {
+            dataSrc: function (json) {
+                console.log('process response data from server side before display.');
+                return json.data;
+            },
+            url : "{:url('index/getData')}",
+            type : "POST",
+            crossDomain: true
+        },
+        order: [[ 1, 'asc' ]],
+        rowId: 'id',
+        columns: [
+            {
+                data: null,
+                defaultContent: '',
+                className: 'select-checkbox',
+                orderable: false
+            },
+            { data: "id" },
+            { data: "name" },
+            { data: "pinyin" },
+            { data: "surname_cover" },
+            { data: "surname_head" }
+        ],
+        select: {
+            style: 'multi',
+            selector: 'td:first-child'
+        },
+        dom: "Bfrtip",
+        buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor },
+            'copy',
+            'excel',
+            'pdf',
+            'print'
+        ],
+        renderer: "bootstrap",
+        responsive: true,
+        serverSide : true,//服务端进行分页处理
+        fixedHeader: true
+//        rowReorder:  {
+//            dataSrc: 'id',
+//            editor:  editor
+//        },
+//        keys: true
+    } );
+
+
+</script>

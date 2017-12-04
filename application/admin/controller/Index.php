@@ -15,28 +15,27 @@ class Index extends Controller
         $this->view->engine->layout(true);
         return view();
     }
-    public function test()
+    public function a()
     {
         return view();
     }
-    public function j()
+    public function b()
     {
         return view();
     }
-    public function tt()
-    {
-        $this->view->engine->layout(true);
-        return view();
-    }
-    public function ttt()
+    public function c()
     {
         return view();
     }
-    public function te()
+    public function d()
     {
         return view();
     }
-    public function t()
+    public function e()
+    {
+        return view();
+    }
+    public function f()
     {
         $data='{
     "code": "0",
@@ -59,9 +58,25 @@ class Index extends Controller
     public function getData()
 {
     $dataTables=request()->post();
-    //print_r($dataTables);
+//    print_r($dataTables);
+//
+//    foreach ($dataTables['columns'] as $key=>$val)
+//    {
+//        print_r($val['orderable']);
+//
+//    }
+
+//        print_r($dataTables['order'][0]['column']);
+//        print_r($dataTables['order'][0]['dir']);
+        $column=$dataTables['order'][0]['column'];
+        $dir=$dataTables['order'][0]['dir'];
+        $order = [
+            $dataTables['columns'][$column]['data']=> $dir,
+        ];
+        $search=$dataTables['search']['value'];
+        print_r($search);
     $surname=model('Surname');
-    $result=$surname->getSurname($dataTables['start'],$dataTables['length']);
+    $result=$surname->getSurname($order,$dataTables['start'],$dataTables['length']);
     $data=[
         "code"=> 0,
         "draw" => intval($dataTables['draw']),
@@ -72,11 +87,11 @@ class Index extends Controller
     ];
     return json($data);
 }
-    public function ss()
+    public function g()
     {
         return view();
     }
-    public function sste()
+    public function h()
     {
 
 
@@ -107,18 +122,18 @@ class Index extends Controller
         return  $a;
     }
 
-public function sse()
+public function i()
 {
     $dataTables=request()->post();
    // return $dataTables;
     print_r($dataTables);
 }
 
-    public function se()
+    public function j()
     {
         return view();
     }
-    public function ff()
+    public function k()
     {
         return view();
     }
@@ -126,10 +141,27 @@ public function sse()
     public function pt()
     {
         $dataTables=request()->post();
-        // return $dataTables;
-        print_r($dataTables);
+        $data=$dataTables["data"];
+        $id_key=array_keys($data);
+        $id=$id_key[0];
+        $field_key=array_keys($data[$id]);
+        $field=$field_key[0];
+        $field_val=$data[$id][$field];
+        $surname=model('Surname');
+        $surname->save([$field=>$field_val],['id' => $id]);
+        $user = $surname->get($id);
+        $data=[
+            "id"=>$id,
+            "code"=> "1",
+            "message"=>"编辑成功",
+            "data" => $user
+        ];
+        return json($data);
     }
-
+    public function ee()
+    {
+        return view();
+    }
 }
 
 
