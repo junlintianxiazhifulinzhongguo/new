@@ -30,9 +30,9 @@
     .form-control{
         font-size: 1.4rem;
     }
-    /*.a,.b,.c,.d{*/
-        /*display: inline-table;*/
-    /*}*/
+    body{
+        background-color: black;
+    }
 </style>
 <body>
 
@@ -254,7 +254,7 @@
         },
         //dom: '<"top"Bfrtip<"clear">><"bottom"Bfrtilp<"clear">>',
         //dom: "Bfrtlp",
-        dom:'<"a"Bf>t<"b"lpf>i<"clear">',
+        dom:'<"a"Bf>rt<"b"pfl>i<"clear">',
         buttons: [
             { extend: "create", editor: editor },
             { extend: "edit",   editor: editor },
@@ -270,8 +270,10 @@
             }
         ],
         renderer: "bootstrap",
+        autoWidth: true,
         responsive: true,
         serverSide : true,//服务端进行分页处理
+        searchDelay: 1000,
         deferRender: true,
 //        scrollY:     750,
 //        scroller: {
@@ -293,12 +295,19 @@
 
 
 
-        fixedHeader: true
+        //fixedHeader: true
 //        rowReorder:  {
 //            dataSrc: 'id',
 //            editor:  editor
 //        },
-//        keys: true
+       // keys: true,
+        stateSave: true,
+        stateSaveCallback: function(settings,data) {
+            localStorage.setItem( 'DataTables_' + settings.sInstance, JSON.stringify(data) )
+        },
+        stateLoadCallback: function(settings) {
+            return JSON.parse( localStorage.getItem( 'DataTables_' + settings.sInstance ) )
+        }
     } );
 
 
@@ -310,7 +319,7 @@
         $('table tbody tr').addClass('selected');
         console.log(111);
     });
-  //  $('.form-control').removeClass('form-control-sm').addClass('form-control-md');
+    $('.form-control').removeClass('form-control-sm').addClass('form-control-md');
 
    // $('.dataTables_length').addClass('inline-block');
 </script>
