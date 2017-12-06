@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css" rel="stylesheet">
     <link href="/new/public/static/admin/css/editor.dataTables.min.css" rel="stylesheet">
+    <link href="/new/public/static/admin/css/editor.bootstrap4.min.css" rel="stylesheet">
     <link href="/new/public/static/common/css/common.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -28,10 +29,12 @@
 </html>
 
 <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
 <script src="/new/public/static/admin/js/dataTables.editor.min.js"></script>
+<script src="/new/public/static/admin/js/editor.bootstrap4.min.js"></script>
 <script>
 
     var lang = {
@@ -123,7 +126,9 @@
         } );
 
         var table=$('#example').DataTable( {
-            language:lang,  //中文提示
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Chinese.json"
+            },
             aLengthMenu: [5, 25, 50, "全部"],//让用户选择页面记录数量
             iDisplayLength: 5, //默认页面中的记录数量。
             dom: "Bfrtip",

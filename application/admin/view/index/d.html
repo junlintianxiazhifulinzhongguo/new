@@ -148,7 +148,37 @@
             label: "Surname head:",
             name: "surname_head"
         }
-        ]
+        ],
+        i18n: {
+            create: {
+                button: "新建",
+                title:  "添加",
+                submit: "新增"
+            },
+            edit: {
+                button: "编辑",
+                title:  "编辑",
+                submit: "更新"
+            },
+            remove: {
+                button: "删除",
+                title:  "删除",
+                submit: "删除",
+                confirm: {
+                    _: "你确定要删除这 %d 条数据吗?",
+                    1: "你确定要删除这 1 条数据吗?"
+                }
+            },
+            error: {
+                system: "发生了一个错误，请与系统管理员"
+            },
+            datetime: {
+                previous: '之前的',
+                next:     '管理',
+                months:   [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+                weekdays: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ]
+            }
+        }
     } );
 
     // Activate an inline edit on click of a table cell
